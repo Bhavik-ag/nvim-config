@@ -48,9 +48,19 @@ vim.lsp.config.biome = {
 -- Tailwind CSS (NO formatting)
 -- -------------------------
 
-vim.lsp.config.tailwindcss = {
+vim.lsp.config.tailwindcss.setup = {
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = {
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "tsx",
+  },
 }
 
 -- -------------------------
