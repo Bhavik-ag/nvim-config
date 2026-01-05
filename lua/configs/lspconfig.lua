@@ -1,6 +1,13 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "biome", "ts_ls", "jsonls", "tailwindcss", "dockerls", "sqlls", "prismals" }
-vim.lsp.enable(servers)
+vim.lsp.config("html", {})
+vim.lsp.config("cssls", {})
+vim.lsp.config("biome", { filetypes = { "javascript", "typescript", "json" } })
+vim.lsp.config("ts_ls", { filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" } })
+vim.lsp.config("jsonls", { filetypes = { "json", "jsonc" } })
+vim.lsp.config("tailwindcss", { filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx" } })
+vim.lsp.config("dockerls", { filetypes = { "dockerfile" } })
+vim.lsp.config("sqlls", { filetypes = { "sql" } })
+vim.lsp.config("prismals", { filetypes = { "prisma" } })
 
--- read :h vim.lsp.config for changing options of lsp servers 
+vim.lsp.enable({ "html", "cssls", "biome", "ts_ls", "jsonls", "tailwindcss", "dockerls", "sqlls", "prismals" })
