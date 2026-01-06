@@ -1,13 +1,38 @@
-require("nvchad.configs.lspconfig").defaults()
+local nvlsp = require("nvchad.configs.lspconfig")
+nvlsp.defaults()
 
-vim.lsp.config("html", {})
-vim.lsp.config("cssls", {})
-vim.lsp.config("biome", { filetypes = { "javascript", "typescript", "json" } })
-vim.lsp.config("ts_ls", { filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" } })
-vim.lsp.config("jsonls", { filetypes = { "json", "jsonc" } })
-vim.lsp.config("tailwindcss", { filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx" } })
-vim.lsp.config("dockerls", { filetypes = { "dockerfile" } })
-vim.lsp.config("sqlls", { filetypes = { "sql" } })
-vim.lsp.config("prismals", { filetypes = { "prisma" } })
+local lspconfig = require("lspconfig")
+local on_attach = nvlsp.on_attach
+local on_init = nvlsp.on_init
+local capabilities = nvlsp.capabilities
 
-vim.lsp.enable({ "html", "cssls", "biome", "ts_ls", "jsonls", "tailwindcss", "dockerls", "sqlls", "prismals" })
+local servers = { "html", "cssls", "jsonls", "dockerls", "sqlls", "prismals" }
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup({
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+  })
+end
+
+lspconfig.ts_ls.setup({
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+})
+
+lspconfig.biome.setup({
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  filetypes = { "javascript", "typescript", "json" },
+})
+
+lspconfig.tailwindcss.setup({
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+})
