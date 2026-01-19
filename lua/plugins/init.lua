@@ -111,6 +111,12 @@ return {
     },
   },
   {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+    opts = {},
+  },
+  {
     "sourcegraph/amp.nvim",
     branch = "main",
     lazy = false,

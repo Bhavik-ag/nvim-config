@@ -16,12 +16,7 @@ for _, lsp in ipairs(servers) do
   })
 end
 
-lspconfig.ts_ls.setup({
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-  filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-})
+-- ts_ls replaced by typescript-tools.nvim
 
 lspconfig.biome.setup({
   on_attach = on_attach,

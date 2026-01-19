@@ -6,8 +6,9 @@
 local M = {}
 
 M.base46 = {
-  theme = "gruvbox",
-  transparency = true
+  theme = "material-deep-ocean",
+  transparency = false,
+  theme_toggle = { "material-deep-ocean", "pastelDark" },
 
   -- hl_override = {
   -- 	Comment = { italic = true },
@@ -19,7 +20,9 @@ M.nvdash = { load_on_startup = true }
 M.ui = {
   tabufline = {
     lazyload = false,
-    order = { "treeOffset", "buffers" },
+  },
+  telescope = {
+    style = "bordered"
   }
 }
 
